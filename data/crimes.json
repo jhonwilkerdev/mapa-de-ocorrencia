@@ -1,0 +1,43 @@
+{
+    "type": "FeatureCollection",
+    "features": 
+    [
+        {
+            "type": "Feature",
+            "properties": {
+                "title": "Roubo de Moto",
+                "description": "um elemento fan vermelha com faca",
+                "marker-color": "#3bb2d0",
+                "marker-size": "small",
+                "marker-symbol": "bicycle"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -43.004284,
+                    -4.250141
+                ]
+            
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "title": "Roubo de celular",
+                "description": "um elemento fan vermelha com faca",
+                "marker-color": "#3bb2d0",
+                "marker-size": "small",
+                "marker-symbol": "triangle"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -43.006304,
+                    -4.248838
+                
+                ]
+            
+            }
+        }
+    ]
+}
