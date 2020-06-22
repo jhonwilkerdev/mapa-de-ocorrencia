@@ -7,124 +7,187 @@
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.3/leaflet-heat.js'></script>
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <div>
-    <div style="width:1080px; height:860px" id="map" class='map'></div>
+    <h1>Cadastro Ocorrencias</h1>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-6">
+            <div style="width:800px; height:450px ; align-self: initial;" id="map" class='map'>
+            
+                <script>
+                    L.mapbox.accessToken = 'pk.eyJ1IjoiamhvbndpbGtlciIsImEiOiJja2Fmb29oYzMwMGw3MnhyODF5M3dhMW9tIn0.07daPNOyPLDC6bKX1pn9yA';
     
-    <script>
-       // var dadosJson =  JSON.stringify(crimes) %>;
+                    var coordinateOslo = [-4.256936, -43.014699];
+                    var zoomLevel = 15;
 
-        L.mapbox.accessToken = 'pk.eyJ1IjoiamhvbndpbGtlciIsImEiOiJja2Fmb29oYzMwMGw3MnhyODF5M3dhMW9tIn0.07daPNOyPLDC6bKX1pn9yA';
-    
-        var coordinateOslo = [-4.256936, -43.014699];
-        var zoomLevel = 15;
-    
-        map = L.mapbox.map('map', null, {
-        center:coordinateOslo,
-        zoom: zoomLevel
-        });
-        L.control.fullscreen().addTo(map);
-        
-        var layers = {
-        Google: L.tileLayer('https://mts{s}.google.com/vt/lyrs=s@186112443&hl=x-local&src=app&x={x}&y={y}&z={z}&s=Galile', {
-            subdomains: '0123',
-            attribution: '&copy; Google Maps'
-        }),
-        Satellite: L.mapbox.tileLayer('mapbox.streets-satellite'),
-        Street:L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11')
-        
-        };
-    
-        layers.Google.addTo(map);
-        L.control.layers(layers).addTo(map);
-    
-        var heat = L.heatLayer([], {radius: 25}).addTo(map);
-        /*
-        dadosJson.forEach(function(dadoJson) { 
-        var coord = dadoJson.geometry.coordinates
-        heat.addLatLng([coord[1],coord[0],2]);
-        }); 
-        */
+                    map = L.mapbox.map('map', null, {
+                    center:coordinateOslo,
+                    zoom: zoomLevel
+                    });
+                    L.control.fullscreen().addTo(map);
+                    
+                    var layers = {
+                    Google: L.tileLayer('https://mts{s}.google.com/vt/lyrs=s@186112443&hl=x-local&src=app&x={x}&y={y}&z={z}&s=Galile', {
+                        subdomains: '0123',
+                        attribution: '&copy; Google Maps'
+                    }),
+                    Satellite: L.mapbox.tileLayer('mapbox.streets-satellite'),
+                    Street:L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11')
+                    
+                    };
 
-        //var heat = L.heatLayer([], {maxZoom:16},);
-        //heat.addTo(map);  
-        var myLayer = L.mapbox.featureLayer().addTo(map);
-       
-        //myLayer.setGeoJSON(dadosJson);
+                    layers.Google.addTo(map);
+                    L.control.layers(layers).addTo(map);
 
-        myLayer.on('layeradd', function(e) {
-        var marker = e.layer,
-            feature = marker.feature;
-        marker.setIcon(L.divIcon(feature.properties.icon));
-        });
+                    var heat = L.heatLayer([], {radius: 25}).addTo(map);
+                    /*
+                    dadosJson.forEach(function(dadoJson) { 
+                    var coord = dadoJson.geometry.coordinates
+                    heat.addLatLng([coord[1],coord[0],2]);
+                    }); 
+                    */
 
-        var google_hybrid_overlay = L.tileLayer('https://mts{s}.google.com/vt/lyrs=h@186112443&hl=x-local&src=app&x={x}&y={y}&z={z}&s=Galile', {
-        subdomains: '0123',
-        attribution: '&copy; Google Maps',
-        zIndex: 4
-        })
-    
-        google_hybrid_overlay.setOpacity(1);
-        map.addLayer(google_hybrid_overlay);
-        
+                    //var heat = L.heatLayer([], {maxZoom:16},);
+                    //heat.addTo(map);  
+                    var myLayer = L.mapbox.featureLayer().addTo(map);
 
-        // Store the fixedMarker coordinates in a variable.
-        //var fc = fixedMarker.getLatLng();
-        var featureLayer = L.mapbox.featureLayer().addTo(map);
-    
-    
-        // listen for google maps	
-        map.on('baselayerchange', function(eo)
-            {
-                if( eo.name == 'Google' ) {
+                    //myLayer.setGeoJSON(dadosJson);
+
+                    myLayer.on('layeradd', function(e) {
+                    var marker = e.layer,
+                        feature = marker.feature;
+                    marker.setIcon(L.divIcon(feature.properties.icon));
+                    });
+
+                    var google_hybrid_overlay = L.tileLayer('https://mts{s}.google.com/vt/lyrs=h@186112443&hl=x-local&src=app&x={x}&y={y}&z={z}&s=Galile', {
+                    subdomains: '0123',
+                    attribution: '&copy; Google Maps',
+                    zIndex: 4
+                    })
+
                     google_hybrid_overlay.setOpacity(1);
-                }
-                else {
-                    google_hybrid_overlay.setOpacity(0);
-                }
-            }
-        )
-    
-    map.on('click', function(ev) {
-    // ev.latlng gives us the coordinates of
-    // the spot clicked on the map.
-    var c = ev.latlng;
-    console.log(c)
-    L.marker(new L.LatLng(c.lng, c.lat), {
-            icon: L.mapbox.marker.icon({
-                'marker-color': 'ff8888'
-            })
-        }).addTo(map);
-               
-        var geojson = {
-        type: 'FeatureCollection',
-        features: [
-            {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [c.lng, c.lat]
-            },
-            "properties": {
-                "marker-color": "#ff8888"
-            }
-            }, {
-            "type": "Feature",
-            "properties": {
-                "stroke": "#000",
-                "stroke-opacity": 0.5,
-                "stroke-width": 4
-            }
-            }
-        ]
-        };
+                    map.addLayer(google_hybrid_overlay);
+                    
 
-        featureLayer.setGeoJSON(geojson);
-    
-        // Finally, print the distance between these two points
-        // on the screen using distanceTo().
-        //var container = document.getElementById('distance');
-        ///container.innerHTML = (fc.distanceTo(c)).toFixed(0) + 'm';
-        });
-    </script>
+                    // Store the fixedMarker coordinates in a variable.
+                    //var fc = fixedMarker.getLatLng();
+                    var featureLayer = L.mapbox.featureLayer().addTo(map);
+
+
+                    // listen for google maps	
+                    map.on('baselayerchange', function(eo)
+                        {
+                            if( eo.name == 'Google' ) {
+                                google_hybrid_overlay.setOpacity(1);
+                            }
+                            else {
+                                google_hybrid_overlay.setOpacity(0);
+                            }
+                        }
+                    )
+                    
+
+                    // Store the fixedMarker coordinates in a variable.
+                   
+
+// Create a featureLayer that will hold a marker and linestring.
+                    var featureLayer = L.mapbox.featureLayer().addTo(map);  
+
+                map.on('click', function(ev) {
+                // ev.latlng gives us the coordinates of
+                // the spot clicked on the map.
+                var c = ev.latlng;
+                
+                console.log(c)
+
+                L.marker(new L.LatLng(c.lng, c.lat), {
+                        icon: L.mapbox.marker.icon({
+                            'marker-color': 'ff8888'
+                        })
+                    }).addTo(map);
+                        
+                    var geojson = {
+                    type: 'FeatureCollection',
+                    features: [
+                        {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [c.lng, c.lat]
+                        },
+                        "properties": {
+                            "marker-color": "#ff8888"
+                        }
+                        }, {
+                        "type": "Feature",
+                        
+                        "properties": {
+                            "stroke": "#000",
+                            "stroke-opacity": 0.5,
+                            "stroke-width": 4
+                        }
+                        }
+                    ]
+                    };
+
+                    featureLayer.setGeoJSON(geojson);
+
+                    // Finally, print the distance between these two points
+                    // on the screen using distanceTo().
+                    var lati = document.getElementById('lati');
+                    lati.value = (c.lat);
+                    var long = document.getElementById('longi');
+                    long.value = (c.lng);
+                    });                    
+                </script>
+                
+            </div> 
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-8 ">
+                <h2>Formulario da Ocorrência</h2>
+                <p>Selecione no mapa o local da Ocorrencia antes de cadastrar.</p>
+                <form action="/cadastro-ocorrencia" method="POST">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Latitude</label>
+                                <input id="lati" type="number" step=any name="message" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Longitude</label>
+                                <input id="longi" type="number" step=any name="message" class="form-control">
+                              </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>N° do BO</label>
+                        <input type="num" name="message" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo:</label>
+                        
+                        <select class="form-control" id="tipoOcorrencia">
+                            
+                            <% tipoDeOcorrencia.forEach(function(tipo){ %>
+                                <option><%=tipo.id  +" - "+ tipo.descricao %></option>
+                            <% }) %>
+                        </select>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição (descreva caracteristicas de forma resumida)</label>
+                        <input type="text" name="name" placeholder="Dois elementos em moto azul usando garruncha! "class="form-control">
+                    </div>
+                    
+                    <div class="form-group text-right">
+                        <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+                    </div>
+                </form>
+          </div>
+        </div>
+    </div>
 </div>

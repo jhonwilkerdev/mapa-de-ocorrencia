@@ -1,17 +1,9 @@
-/* body{
-  font-size: 16px;
-  line-height: 1.5;
-}
 
-header .navbar{
-  border-radius: 0;
-  margin: 0;
-}
 
 main{
-  min-height: 500px;
+  min-height: 25px;
   padding: 50px 0;
-} */
+}  
 
 .footer-site{
   color: black;
@@ -23,4 +15,24 @@ main{
   justify-content: center;
 }
 
-/* #map { position:center; top:0; bottom:0; width:90%; } */
+pre.ui-distance {
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  padding:5px 10px;
+  background:rgba(0,0,0,0.5);
+  color:#fff;
+  font-size:11px;
+  line-height:18px;
+  border-radius:3px;
+}
+
+.map { 
+  position:center; 
+  top:0; 
+  bottom:0; 
+  width:90%;   
+  display: flex;
+  align-content: center;
+  justify-content: center;
+} 

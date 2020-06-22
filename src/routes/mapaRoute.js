@@ -17,7 +17,11 @@ module.exports = function(application){
   });
 
   application.get('/cadastro-ocorrencia', function(req, res){
-    application.src.controllers.mapaController.cadastro(application, req, res);
-});
+    application.src.controllers.mapaController.getOcorrencia(application, req, res);
+  });
+
+  application.post('/cadastro-ocorrencia', function(req, res){
+    application.src.controllers.mapaController.postOcorrencia(application, req, res);
+  });
   
 }

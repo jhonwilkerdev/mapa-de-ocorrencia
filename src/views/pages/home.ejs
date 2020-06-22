@@ -8,12 +8,12 @@
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<div>
-    <div style="width:1080px; height:860px" id="map" class='map'></div>
+<div class="container">
+    <div style="width:1080px; height:860px" id="map" ></div>
     
     <script>
-        var dadosJson = <%- JSON.stringify(crimes) %>;
-
+        var dadosJson = <%- JSON.stringify(ocorrencias) %>;
+        console.log(dadosJson);
         L.mapbox.accessToken = 'pk.eyJ1IjoiamhvbndpbGtlciIsImEiOiJja2Fmb29oYzMwMGw3MnhyODF5M3dhMW9tIn0.07daPNOyPLDC6bKX1pn9yA';
     
         var coordinateOslo = [-4.256936, -43.014699];

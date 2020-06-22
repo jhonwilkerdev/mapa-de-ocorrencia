@@ -1,47 +1,43 @@
 {
-    "ocorrencias": [
-		{
-            "boletim":1001,
-			"latitude":-4.256936,
-            "longitude":-43.014699,
-            "descricao":"roubo de celular",
-            "corMarcador":"#0000FF"
-        },
+    "type": "FeatureCollection",
+    "features": 
+    [
         {
-            "boletim":1002,
-			"latitude":-4.250141, 
-            "longitude":-43.004284,
-            "descricao":"roubo de celular",
-            "corMarcador":"#0000FF"
-        },
-        {
-            "boletim":1003,
-			"latitude":-4.246972,
-            "longitude":-43.009723,
-            "descricao":"roubo de celular",
-            "corMarcador":"#0000FF"
-        },
-        {
-            "boletim":1004,
-			"latitude":-4.248838, 
-            "longitude":-43.006304,
-            "descricao":"roubo de celular",
-            "corMarcador":"#0000FF"
-        },
-        {
-            "boletim":1005,
-			"latitude":-4.248259, 
-            "longitude":-43.007649,
-            "descricao":"roubo de celular",
-            "corMarcador":"#0000FF"
+            "type": "Feature",
+            "properties": {
+                "title": "Roubo de Moto",
+                "description": "um elemento fan vermelha com faca",
+                "marker-color": "#3bb2d0",
+                "marker-size": "small",
+                "marker-symbol": "bicycle"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -43.004284,
+                    -4.250141
+                ]
             
+            }
         },
         {
-            "boletim":1006,
-			"latitude":-4.256921, 
-            "longitude":-43.016349,
-            "descricao":"roubo de celular",
-            "corMarcador":"#0000FF"
+            "type": "Feature",
+            "properties": {
+                "title": "Roubo de celular",
+                "description": "um elemento fan vermelha com faca",
+                "marker-color": "#3bb2d0",
+                "marker-size": "small",
+                "marker-symbol": "triangle"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -43.006304,
+                    -4.248838
+                
+                ]
+            
+            }
         }
     ]
 }

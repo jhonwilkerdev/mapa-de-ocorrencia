@@ -1,0 +1,20 @@
+{
+    "tipoDeOcorrencia": [
+        {
+            "id":1,
+            "descricao":"Roubo de Moto"
+        },
+        {
+            "id":2,
+            "descricao":"Roubo de Celular"
+        },
+        {
+            "id":3,
+            "descricao":"Atrito Familiar"
+        },
+        {
+            "id":4,
+            "descricao":"Tráfico de Drogas"
+        }
+    ]
+}
