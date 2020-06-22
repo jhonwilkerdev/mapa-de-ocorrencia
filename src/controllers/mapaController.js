@@ -1,4 +1,6 @@
-const faker = require('faker')
+const faker = require('faker');
+const mongoose  = require('mongoose');
+const Ocorrencia = mongoose.model('Ocorrencia');
 
 module.exports.index = function(application, req, res) {
   var ocorrencia = new application.src.models.ocorrencia();
@@ -15,8 +17,10 @@ module.exports.getOcorrencia = function(application, req, res) {
 }
 
 module.exports.postOcorrencia = function(application, req, res) {
-  res.send('Obrigado por entrar em contato conosco, ' + req.body.name + '! Responderemos em breve!')
+  var ocorrentia = new Ocorrencia();
+  //ocorrencia.description = req.body.
   console.log(req);
+  res.send('Obrigado por entrar em contato conosco, ' + req.body.name + '! Responderemos em breve!')
   /* 
   var ocorrencia = new application.src.models.ocorrencia();
   ocorrencia.getTipoOcorrencia(function(err, result) {

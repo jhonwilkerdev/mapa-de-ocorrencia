@@ -153,34 +153,35 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Latitude</label>
-                                <input id="lati" type="number" step=any name="message" class="form-control">
+                                <input id="lati" type="number" step=any name="latitude" class="form-control">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Longitude</label>
-                                <input id="longi" type="number" step=any name="message" class="form-control">
+                                <input id="longi" type="number" step=any name="longitude" class="form-control">
                               </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>N° do BO</label>
-                        <input type="num" name="message" class="form-control">
+                        <input type="num" name="numbo" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Tipo:</label>
                         
-                        <select class="form-control" id="tipoOcorrencia">
-                            
+                        <select class="form-control" id="tipoOcorrencia" name="tipoOcorrencia">
+                            <option style="color:gray" value="null">Selecione uma Opção</option>
                             <% tipoDeOcorrencia.forEach(function(tipo){ %>
-                                <option><%=tipo.id  +" - "+ tipo.descricao %></option>
+                                <option value="<%=tipo.id%>" style="background-color:<%=tipo.cor%>" ><%= tipo.descricao %></option>
                             <% }) %>
+                            
                         </select>
                         
                     </div>
                     <div class="form-group">
                         <label>Descrição (descreva caracteristicas de forma resumida)</label>
-                        <input type="text" name="name" placeholder="Dois elementos em moto azul usando garruncha! "class="form-control">
+                        <input type="text" name="descricao" placeholder="Dois elementos em moto azul usando garruncha! "class="form-control">
                     </div>
                     
                     <div class="form-group text-right">

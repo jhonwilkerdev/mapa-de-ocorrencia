@@ -2,19 +2,29 @@
     "tipoDeOcorrencia": [
         {
             "id":1,
-            "descricao":"Roubo de Moto"
+            "descricao":"Roubo de Moto",
+            "cor":"#3bb2d0"
         },
         {
             "id":2,
-            "descricao":"Roubo de Celular"
+            "descricao":"Roubo de Celular",
+            "cor":"#DAA520"
         },
         {
             "id":3,
-            "descricao":"Atrito Familiar"
+            "descricao":"Atrito Familiar",
+            "cor":"#B22222"
         },
         {
             "id":4,
-            "descricao":"Tráfico de Drogas"
+            "descricao":"Tráfico de Drogas",
+            "cor":"#00FA9A"
+        },
+        {
+            "id":5,
+            "descricao":"Homicidio",
+            "cor":"#000000"
         }
+        
     ]
 }

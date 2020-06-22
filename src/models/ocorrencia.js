@@ -1,4 +1,33 @@
+'use-strict';
 var fs = require('fs');
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const schema = new Schema({
+    title: {
+      type: String,
+      required:false
+    },
+    description: {
+      type: String,
+      require:true
+    },
+    color:{
+      type:String,
+      require:true
+    },
+    coordinates:[{
+      type: Number,
+      require:true
+    }],
+    tags:[{
+      type:String,
+      require:true
+    }]
+});
+
+module.exports = mongoose.model('Ocorrencia',schema);
 
 function ocorrencia() {}
 

@@ -5,11 +5,11 @@
         {
             "type": "Feature",
             "properties": {
-                "title": "Roubo de Moto",
+                "title": "",
                 "description": "um elemento fan vermelha com faca",
                 "marker-color": "#3bb2d0",
                 "marker-size": "small",
-                "marker-symbol": "bicycle"
+                "marker-symbol": ""
             },
             "geometry": {
                 "type": "Point",

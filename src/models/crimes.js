@@ -19,5 +19,6 @@ crimes.prototype.getCrimes = function(callback) {
 
 module.exports = function(){
   return crimes;
+  
 };
 

@@ -1,10 +1,16 @@
+'use-strict';
+
 const consign = require('consign');
 const express = require('express')
 const bodyParser = require('body-parser')
 const expressLayouts = require('express-ejs-layouts')
+const mongoose = require('mongoose')
 const port = process.env.PORT || 4000
 
+
 const app = express();
+//mongoose.connect('mongodb+srv://root:3cia123@cluster0-bcj1a.azure.mongodb.net/test');
+mongoose.connect('mongodb://localhost:27017');
 
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
